@@ -2,6 +2,8 @@ package io.pivotal.boothacks;
 
 import static org.fest.assertions.Assertions.assertThat;
 
+import java.util.Locale;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,7 +24,8 @@ public class HelloMessageTransfomerTests {
 
 	@Test
 	public void transform_shouldAddPrefix() {
-		assertThat(transformer.transform("Pivotal")).isEqualTo("Hello Pivotal There");
+		assertThat(transformer.transform("Pivotal", Locale.US))
+				.isEqualTo("Hello Pivotal There");
 	}
 
 }
