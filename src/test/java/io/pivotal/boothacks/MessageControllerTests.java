@@ -3,6 +3,8 @@ package io.pivotal.boothacks;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import java.util.Locale;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,10 +35,17 @@ public class MessageControllerTests {
 	}
 
 	@Test
-	public void get_shouldReturnJson() throws Exception {
-		this.mvc.perform(get("/message").param("message", "Pivotal"))
+	public void get_whenLocalIsEnglish_shouldReturnJsonWithEnglishMessage() throws Exception {
+		this.mvc.perform(get("/message").param("message", "Pivotal").locale(Locale.ENGLISH))
 				.andExpect(status().isOk())
 				.andExpect(content().json("{\"message\": \"Hello Pivotal you look nice\"}"));
+	}
+
+	@Test
+	public void get_whenLocalIsGerman_shouldReturnJsonWithGermanMessage() throws Exception {
+		this.mvc.perform(get("/message").param("message", "Pivotal").locale(Locale.GERMAN))
+				.andExpect(status().isOk())
+				.andExpect(content().json("{\"message\": \"Hallo Pivotal Sie schön aussehen\"}"));
 	}
 
 }
