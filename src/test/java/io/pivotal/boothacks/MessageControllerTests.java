@@ -36,7 +36,7 @@ public class MessageControllerTests {
 	public void get_shouldReturnJson() throws Exception {
 		this.mvc.perform(get("/message").param("message", "Pivotal"))
 				.andExpect(status().isOk())
-				.andExpect(content().json("{\"message\": \"Hello Pivotal\"}"));
+				.andExpect(content().json("{\"message\": \"Hello Pivotal you look nice\"}"));
 	}
 
 }

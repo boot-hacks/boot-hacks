@@ -14,12 +14,12 @@ public class HelloMessageTransfomerTests {
 
 	@Before
 	public void setup() {
-		this.transformer = new HelloMessageTransfomer("Hello");
+		this.transformer = new HelloMessageTransfomer("Hello", "There");
 	}
 
 	@Test
 	public void transform_shouldAddPrefix() {
-		assertThat(transformer.transform("Pivotal")).isEqualTo("Hello Pivotal");
+		assertThat(transformer.transform("Pivotal")).isEqualTo("Hello Pivotal There");
 	}
 
 }
