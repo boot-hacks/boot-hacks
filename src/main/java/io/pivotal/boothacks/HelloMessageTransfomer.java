@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class HelloMessageTransfomer implements MessageTransformer {
-	
+
 	private final String prefix;
 
 	@Autowired

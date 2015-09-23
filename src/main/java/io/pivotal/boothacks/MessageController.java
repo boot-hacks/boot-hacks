@@ -12,17 +12,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MessageController {
 
-	  private MessageTransformer messageTransformer;
+	private MessageTransformer messageTransformer;
 
-	  @Autowired
-	  public MessageController(MessageTransformer messageTransformer) {
-	    this.messageTransformer = messageTransformer;
-	  }
+	@Autowired
+	public MessageController(MessageTransformer messageTransformer) {
+		this.messageTransformer = messageTransformer;
+	}
 
-	  @RequestMapping(value = "/message", method = RequestMethod.GET)
-	  public Map<String, String> get(@RequestParam String message) {
-	    String transformedMessage = this.messageTransformer.transform(message);
-	    return Collections.singletonMap("message", transformedMessage);
-	  }
+	@RequestMapping(value = "/message", method = RequestMethod.GET)
+	public Map<String, String> get(@RequestParam String message) {
+		String transformedMessage = this.messageTransformer.transform(message);
+		return Collections.singletonMap("message", transformedMessage);
+	}
 
 }
