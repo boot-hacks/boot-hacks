@@ -18,8 +18,7 @@ public class MessageSourceMessageTransformer implements MessageTransformer {
 
 	@Override
 	public String transform(String message, Locale locale) {
-		// FIXME call messageSource.getMessage(code, args, locale)
-		return null;
+		return this.messageSource.getMessage("hello", new Object[] {message}, locale);
 	}
 
 }
