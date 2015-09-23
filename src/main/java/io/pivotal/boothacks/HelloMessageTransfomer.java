@@ -1,26 +1,22 @@
 package io.pivotal.boothacks;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class HelloMessageTransfomer implements MessageTransformer {
 
-	private final String prefix;
-
-	private final String suffix;
+	private BootHacksProperties properties;
 
 	@Autowired
-	public HelloMessageTransfomer(@Value("${boothacks.prefix:Hello}") String prefix,
-			@Value("${boothacks.suffix:you look nice}") String suffix) {
-		this.prefix = prefix;
-		this.suffix = suffix;
+	public HelloMessageTransfomer(BootHacksProperties properties) {
+		this.properties = properties;
 	}
 
 	@Override
 	public String transform(String message) {
-		return String.format("%s %s %s", this.prefix, message, this.suffix);
+		return String.format("%s %s %s", this.properties.getPrefix(), message,
+				this.properties.getSuffix());
 	}
 
 }

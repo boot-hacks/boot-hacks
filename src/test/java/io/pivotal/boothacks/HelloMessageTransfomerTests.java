@@ -14,7 +14,10 @@ public class HelloMessageTransfomerTests {
 
 	@Before
 	public void setup() {
-		this.transformer = new HelloMessageTransfomer("Hello", "There");
+		BootHacksProperties properties = new BootHacksProperties();
+		properties.setPrefix("Hello");
+		properties.setSuffix("There");
+		this.transformer = new HelloMessageTransfomer(properties);
 	}
 
 	@Test
